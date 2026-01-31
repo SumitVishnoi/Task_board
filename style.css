@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+*::-webkit-scrollbar {
+  display: none;
+}
 
 html,
 body {
@@ -84,7 +87,7 @@ nav button:active {
 
 section {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   flex-grow: 1;
   display: flex;
   gap: var(--space-md);
@@ -98,15 +101,20 @@ section {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-  padding: var(--padding-sm) var(--padding-md);
+  padding: 0 var(--padding-md);
   border-radius: var(--border-radius-sm);
   transition: all 0.5s ease;
+  overflow: auto;
 }
 
 .heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: var(--btn-primary-color);
+  padding: var(--padding-sm) var(--padding-md);
 }
 
 .task {
@@ -203,4 +211,16 @@ section {
 }
 .modal .center button:active {
   scale: 0.95;
+}
+
+
+@media screen and (max-width: 600px){
+  section {
+    flex-wrap: wrap;
+  }
+
+  .column {
+    height: 50%;
+    overflow: auto;
+  }
 }
